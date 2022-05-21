@@ -7,7 +7,7 @@ class prod:
         self.nombre = nombre
         self.cantidad = cantidad
         self.precio = precio
-
+asd
 
 prod1 = prod("001", "mercedes-benz", "1", "$10.000")
 
