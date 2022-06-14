@@ -1,3 +1,8 @@
+import pandas as pd
+
+
+
+
 def ingprod():
     menuingpro=["Introduzca el codigo del producto: ","Introduzca el nombre del producto: ","Introduzca la cantidad del producto: ","Introduzca el precio del producto: "]
     nprod=[]
@@ -12,7 +17,6 @@ opcion=0
 while opcion != 4:
     print("1.Ingresar producto\n2.Editar producto\n3.Eliminar producto\n4.Ventas\n5.Reporte\n6.Salir")
     opcion = int(input("Ingrese una opción: "))
-
     if opcion==1:
         ingprod()
     elif opcion==2:
