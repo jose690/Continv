@@ -1,36 +1,64 @@
 import pandas as pd
-
-
-
+import os
 
 def ingprod():
-    menuingpro=["Introduzca el codigo del producto: ","Introduzca el nombre del producto: ","Introduzca la cantidad del producto: ","Introduzca el precio del producto: "]
-    nprod=[]
-    for i in range(4):
-        dato=input(menuingpro[0])
-        nprod.append(dato)
-        menuingpro.pop(0)
-    print("Nuevo producto creado\nCodigo: ",nprod[0],"\nNombre: ",nprod[1],"\nCantidad: ",nprod[2],"\nPrecio: ",nprod[3])
+    while True:
+        agregar_producto=input('Desea agregar un producto S/N ')
+        if (agregar_producto=='S')|(agregar_producto=='s'):
+            valcodigo=input('CODIGO ')
+            valnombre=input('NOMBRE ')
+            valcantidad=input('CANTIDAD ')
+            valprecio=input('PRECIO ')
 
-opcion=0
+            p={'CODIGO':[int(valcodigo)],'NOMBRE':[str(valnombre)],'CANTIDAD':[int(valcantidad)],'PRECIO':[int(valprecio)]}
+            df=pd.DataFrame(p)
+            df.to_csv('datos.csv',mode='a',index=False,header=False)
+            print('Datos agregados satisfactoriamente')
 
-while opcion != 4:
-    print("1.Ingresar producto\n2.Editar producto\n3.Eliminar producto\n4.Ventas\n5.Reporte\n6.Salir")
-    opcion = int(input("Ingrese una opción: "))
-    if opcion==1:
+        else:
+            break
+
+def pedirNumeroEntero():
+ 
+    correcto=False
+    num=0
+    while(not correcto):
+        try:
+            num = int(input("Elija una opción: "))
+            correcto=True
+        except ValueError:
+            print('Error, introduce un numero entero')
+     
+    return num
+
+salir=False
+option=0
+while not salir:
+
+    print("1.Ingresar producto")
+    print("2.Editar producto")
+    print("3.Eliminar producto")
+    print("4.Ventas")
+    print("5.Reporte")
+    print('6.Salir')
+    option = pedirNumeroEntero()
+    if option == 1:
         ingprod()
-    elif opcion==2:
-        editprod()
-    elif opcion==3:
-        elimprod()
-    elif opcion==4:
-        ventas()
-    elif opcion==5:
-        reporte()
-    elif opcion==6:
-        print("Saliendo")
+    elif option == 2:
+        edprod()
+    elif option == 3:
+        delprod()
+    elif option == 4:
+        sellprod()
+    elif option == 5:
+        repinv()
+    elif option==6:
+        salir=True
     else:
-        print("Ingrese una opción valida")
+        print ("Introduce un numero entre 1 y 5")
+
+        
+
+
+
     
-
-
