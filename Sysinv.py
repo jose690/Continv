@@ -1,6 +1,8 @@
 import pandas as pd
 import os
 
+
+
 def ingprod():
     while True:
         agregar_producto=input('Desea agregar un producto S/N ')
