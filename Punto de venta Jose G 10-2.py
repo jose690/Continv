@@ -1,3 +1,4 @@
+from ast import Str
 from email import message
 from tkinter import *
 from tkinter import messagebox
@@ -5,6 +6,8 @@ from tokenize import String
 from openpyxl import *
 import time
 import random
+
+from .ads import error_handling
 
 def salir():
     punto_venta.destroy()
@@ -176,8 +179,23 @@ def ventas_totales():
         resultado_prod1=0
     
     try:
-        global resultado_otros_prod
-        global 
+        global resultado_otro_prod
+        global costo_total_prod1
+        if otro_producto13.get():
+            resultado_otro_prod=int(menu_opciones_var13.get())*int(precio_otro_producto13.get())
+            tupla_otro_prod=(precio_otro_producto13.get(),str(menu_opciones13.get()),precio_otro_producto13.get())
+            precio_cantidad_prods.append(tupla_otro_prod)
+        else:
+            resultado_otro_prod=0
+
+        costo_total_prod1= (resultado_prod1+resultado_prod2+resultado_prod3+resultado_prod4+resultado_prod5+resultado_prod6+resultado_prod7+resultado_prod8+resultado_prod9+resultado_prod10+resultado_prod11+resultado_prod12+resultado_otro_prod)
+
+        costo_productos1.delete(0,END)
+        costo_productos1.insert(0,"₡ "+Str(costo_total_prod1))
+    except NameError:
+        error_handling("error")
+    except ValueError:
+        messagebox.showerror("Error","Ponga precio a sus productos primero.")
 
 
 
