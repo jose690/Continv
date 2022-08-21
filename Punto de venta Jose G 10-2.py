@@ -8,11 +8,14 @@ from turtle import end_fill
 from openpyxl import *
 import time
 import random
-from ads import error_handling, today_report
 
+
+#FUNCIONES
+#Función para cerrar la aplicación
 def salir():
     punto_venta.destroy()
 
+#Función para reinicar toda la pantalla para una factura nueva
 def reiniciar_factura():
     try:
         btn_check_var1.set(0)
@@ -89,6 +92,7 @@ def reiniciar_factura():
     except NameError:
         messagebox.showerror("Error","Nada por limpiar")
 
+#Función para mostrar las ventas totales en el resumen
 def ventas_totales():
     precios_prod1={"prod1":20,"prod2":20,"prod3":20,"prod4":20,"prod5":20,"prod6":20,"prod7":20,"prod8":20,"prod9":20,"prod10":20,"prod11":20,"prod12":20,"Otros productos":precio_otro_producto13.get()}
 
@@ -319,7 +323,7 @@ def ventas_totales():
     except ValueError:
         messagebox.showerror("Error","Precio primero")
 
-
+#Función para mostrar la factura en el espacio asignado
 def imprimir_factura():
     try:
         espacio_factura.delete("1.0",END)
@@ -347,18 +351,15 @@ def imprimir_factura():
     except NameError:
         messagebox.showerror("Error","Seleccione los productos primero, gracias")
 
-
+#Función para guardat los datos de la venta en el libro de excel
 def guardar_datos():
-    #Cargar el libro
     try:
         global libro
         archivo_destino="Punto_de_venta.xlsx"
         libro=load_workbook(filename=archivo_destino)
 
-        #Traer la hoja
         hoja=libro.active
 
-        #Variables utiles
         fila=2
         columna=1
         global hoy 
@@ -376,7 +377,6 @@ def guardar_datos():
                     hoja.cell(row=fila,column=columna).value=id_
                     columna+=1
 
-                    #Añadir elementos a las celdas
                     x=len(precio_cantidad_prods)
                     hoja.cell(row=fila,column=columna).value=x
                     columna+=1
@@ -394,7 +394,7 @@ def guardar_datos():
     except NameError:
         messagebox.showerror("Error","Nada que agregar") 
     
-
+#Función para generar el reporte de las ventas diarias en base al archivo de excel
 def reporte():
     archivo_destino2="Punto_de_venta.xlsx"
     libro_reporte=load_workbook(filename=archivo_destino2)
@@ -442,13 +442,11 @@ def reporte():
     espacio_factura.insert(END, "  " + "\n")
 
 
+#INTERFAZ
 
-
-
-#       INTERFAZ
 punto_venta=Tk()
 
-#       CONFIGURACION
+#Configuración
 punto_venta.resizable(width=FALSE,height=FALSE)
 punto_venta.geometry("1200x650")
 punto_venta.title("Punto de venta")
@@ -456,36 +454,30 @@ color="Light Gray"
 color2="Gray"
 punto_venta.configure(bg=color)
 
-#       MARCOS
-
-#       ARRIBA
+#Marcos
 marco_arriba=Frame(punto_venta,bg=color,width=1200, height=50)
 marco_arriba.pack(side=TOP)
 
-#       ABAJO
 marco_abajo=Frame(punto_venta,bg=color,width=1200,height=150)
 marco_abajo.pack(side=BOTTOM)
 
-#       PRODUCTOS
 marco_productos1=Frame(punto_venta,bg=color,width=300,height=500)
 marco_productos1.pack(side=LEFT)
 
 marco_productos2=Frame(punto_venta,bg=color,width=300,height=500)
 marco_productos2.pack(side=LEFT, padx=5)
 
-#       RESUMEN
 marco_resumen=Frame(punto_venta,bg=color,width=800,height=150)
 marco_resumen.place(x=610,y=60)
 
-#       FACTURA
 marco_factura=Frame(punto_venta,bg=color,width=800,height=200)
 marco_factura.place(x=610,y=210)
 
-#       TITULO
+#Titulo
 etiqueta_titulo=Label(marco_arriba,text="La tiendita", font=("Aisha Latin Semibold",20, "bold"),bg=color,pady=10)
 etiqueta_titulo.pack(side=LEFT)
 
-#       ETIQUETAS Y DATOS DE RESUMEN
+#Etiquetas y datos de resumen
 etiqueta_costo_productos1=Label(marco_resumen,text="Costo de productos",font=("Aisha Latin Semibold",10,"bold"),bg=color)
 etiqueta_costo_productos1.place(x=10,y=5)
 
@@ -530,11 +522,11 @@ total.place(x=460,y=95)
 
 
 
-#       ESPACIO DE TEXTO EN FACTURA
+#Espacio de texto para factura
 espacio_factura=Text(marco_factura,width=58,height=14)
 espacio_factura.pack(side=TOP)
 
-#       CHECKS, ETIQUETAS Y CANTIDADES MARCO PROD1
+#Checks, etiquetas y cantidades productos 1
 btn_check_var1=IntVar()
 btn_check1=Checkbutton(marco_productos1,text="prod1",variable=btn_check_var1)
 btn_check1.place(x=3,y=5)
@@ -596,7 +588,7 @@ precio_otro_producto13=Entry(marco_productos1,width=10)
 precio_otro_producto13.place(x=132,y=420)
 
 
-#       OPCIONES DEL MENU PROD1
+#Opciones del menu productos 1
 lista_menu=["0","1","2","3","4","5","6","7","8","9","10"]
 
 
@@ -679,7 +671,7 @@ menu_opciones13.configure(bg=color,font=("arial",7))
 menu_opciones13.place(x=200,y=390)
 
 
-#       CHECKS, ETIQUETAS Y CANTIDADES MARCO PROD2
+#Checks, etiquetas y cantidades productos 2
 mp2_btn_check_var1=IntVar()
 mp2_btn_check1=Checkbutton(marco_productos2,text="prod1",variable=mp2_btn_check_var1)
 mp2_btn_check1.place(x=3,y=5)
@@ -740,7 +732,7 @@ mp2_etiqueta_precio_otro_producto13.place(x=3,y=420)
 mp2_precio_otro_producto13=Entry(marco_productos2,width=10)
 mp2_precio_otro_producto13.place(x=132,y=420)
 
-#       OPCIONES DEL MENU PROD2
+#Opciones del menu productos 2
 mp2_lista_menu=["0","1","2","3","4","5","6","7","8","9","10"]
 
 
@@ -823,9 +815,7 @@ mp2_menu_opciones13.configure(bg=color,font=("arial",7))
 mp2_menu_opciones13.place(x=200,y=390)
 
 
-#       BOTONES FUNCIONALES E INGRESO DE PRECIO PARA OTROS PRODUCTOS
-
-
+#Botones funcionales
 btn_total=Button(marco_abajo,text="Total",width=10,bg=color2,command=lambda:ventas_totales())
 btn_total.place(x=3,y=10)
 
