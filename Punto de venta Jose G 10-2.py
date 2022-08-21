@@ -10,7 +10,14 @@ import time
 import random
 
 
+
 #FUNCIONES
+
+#Manejo de erorres
+def manejo_errores(mensaje_error):
+    if mensaje_error == "Error!":
+        messagebox.showerror("Error", "No hay digitos para manejar!")
+
 #Función para cerrar la aplicación
 def salir():
     punto_venta.destroy()
@@ -198,7 +205,7 @@ def ventas_totales():
         costo_productos1.delete(0,END)
         costo_productos1.insert(0,"₡ "+str(costo_total_prod1))
     except NameError:
-        error_handling("error")
+        manejo_errores("error")
     except ValueError:
         messagebox.showerror("Error","Ponga precio a sus productos primero.")
 
@@ -319,7 +326,7 @@ def ventas_totales():
         total.delete(0,END)
         total.insert(0,"₡ "+str(costo_total_prod1+costo_total_prod2+impuestos_totales))
     except NameError:
-        error_handling("error")
+        manejo_errores("error")
     except ValueError:
         messagebox.showerror("Error","Precio primero")
 
