@@ -3,76 +3,76 @@ from email import message
 from tkinter import *
 from tkinter import messagebox
 from tokenize import String
+from turtle import end_fill
 from openpyxl import *
 import time
 import random
-
-from .ads import error_handling
+from ads import error_handling
 
 def salir():
     punto_venta.destroy()
 
 def reiniciar_factura():
     try:
-        btn_check1.set(0)
-        btn_check2.set(0)
-        btn_check3.set(0)
-        btn_check4.set(0)
-        btn_check5.set(0)
-        btn_check6.set(0)
-        btn_check7.set(0)
-        btn_check8.set(0)
-        btn_check9.set(0)
-        btn_check10.set(0)
-        btn_check11.set(0)
-        btn_check12.set(0)
+        btn_check_var1.set(0)
+        btn_check_var2.set(0)
+        btn_check_var3.set(0)
+        btn_check_var4.set(0)
+        btn_check_var5.set(0)
+        btn_check_var6.set(0)
+        btn_check_var7.set(0)
+        btn_check_var8.set(0)
+        btn_check_var9.set(0)
+        btn_check_var10.set(0)
+        btn_check_var11.set(0)
+        btn_check_var12.set(0)
         
         otro_producto13.delete(0,END)
 
         global lista_menu
-        menu_opciones1.set(lista_menu[0])
-        menu_opciones2.set(lista_menu[0])
-        menu_opciones3.set(lista_menu[0])
-        menu_opciones4.set(lista_menu[0])
-        menu_opciones5.set(lista_menu[0])
-        menu_opciones6.set(lista_menu[0])
-        menu_opciones7.set(lista_menu[0])
-        menu_opciones8.set(lista_menu[0])
-        menu_opciones9.set(lista_menu[0])
-        menu_opciones10.set(lista_menu[0])
-        menu_opciones11.set(lista_menu[0])
-        menu_opciones12.set(lista_menu[0])
-        menu_opciones13.set(lista_menu[0])
+        menu_opciones_var1.set(lista_menu[0])
+        menu_opciones_var2.set(lista_menu[0])
+        menu_opciones_var3.set(lista_menu[0])
+        menu_opciones_var4.set(lista_menu[0])
+        menu_opciones_var5.set(lista_menu[0])
+        menu_opciones_var6.set(lista_menu[0])
+        menu_opciones_var7.set(lista_menu[0])
+        menu_opciones_var8.set(lista_menu[0])
+        menu_opciones_var9.set(lista_menu[0])
+        menu_opciones_var10.set(lista_menu[0])
+        menu_opciones_var11.set(lista_menu[0])
+        menu_opciones_var12.set(lista_menu[0])
+        menu_opciones_var13.set(lista_menu[0])
 
-        mp2_btn_check1.set(0)
-        mp2_btn_check2.set(0)
-        mp2_btn_check3.set(0)
-        mp2_btn_check4.set(0)
-        mp2_btn_check5.set(0)
-        mp2_btn_check6.set(0)
-        mp2_btn_check7.set(0)
-        mp2_btn_check8.set(0)
-        mp2_btn_check9.set(0)
-        mp2_btn_check10.set(0)
-        mp2_btn_check11.set(0)
-        mp2_btn_check12.set(0)
+        mp2_btn_check_var1.set(0)
+        mp2_btn_check_var2.set(0)
+        mp2_btn_check_var3.set(0)
+        mp2_btn_check_var4.set(0)
+        mp2_btn_check_var5.set(0)
+        mp2_btn_check_var6.set(0)
+        mp2_btn_check_var7.set(0)
+        mp2_btn_check_var8.set(0)
+        mp2_btn_check_var9.set(0)
+        mp2_btn_check_var10.set(0)
+        mp2_btn_check_var11.set(0)
+        mp2_btn_check_var12.set(0)
         
         mp2_otro_producto13.delete(0,END)
 
         global mp2_lista_menu
-        mp2_menu_opciones1.set(mp2_lista_menu[0])
-        mp2_menu_opciones2.set(mp2_lista_menu[0])
-        mp2_menu_opciones3.set(mp2_lista_menu[0])
-        mp2_menu_opciones4.set(mp2_lista_menu[0])
-        mp2_menu_opciones5.set(mp2_lista_menu[0])
-        mp2_menu_opciones6.set(mp2_lista_menu[0])
-        mp2_menu_opciones7.set(mp2_lista_menu[0])
-        mp2_menu_opciones8.set(mp2_lista_menu[0])
-        mp2_menu_opciones9.set(mp2_lista_menu[0])
-        mp2_menu_opciones10.set(mp2_lista_menu[0])
-        mp2_menu_opciones11.set(mp2_lista_menu[0])
-        mp2_menu_opciones12.set(mp2_lista_menu[0])
-        mp2_menu_opciones13.set(mp2_lista_menu[0])
+        mp2_menu_opciones_var1.set(mp2_lista_menu[0])
+        mp2_menu_opciones_var2.set(mp2_lista_menu[0])
+        mp2_menu_opciones_var3.set(mp2_lista_menu[0])
+        mp2_menu_opciones_var4.set(mp2_lista_menu[0])
+        mp2_menu_opciones_var5.set(mp2_lista_menu[0])
+        mp2_menu_opciones_var6.set(mp2_lista_menu[0])
+        mp2_menu_opciones_var7.set(mp2_lista_menu[0])
+        mp2_menu_opciones_var8.set(mp2_lista_menu[0])
+        mp2_menu_opciones_var9.set(mp2_lista_menu[0])
+        mp2_menu_opciones_var10.set(mp2_lista_menu[0])
+        mp2_menu_opciones_var11.set(mp2_lista_menu[0])
+        mp2_menu_opciones_var12.set(mp2_lista_menu[0])
+        mp2_menu_opciones_var13.set(mp2_lista_menu[0])
 
         costo_productos1.delete(0,END)
         costo_productos2.delete(0,END)
@@ -95,95 +95,95 @@ def ventas_totales():
     precio_cantidad_prods=[]
 
     if btn_check_var1.get()==1:
-        resultado_prod1=int(menu_opciones1.get())*precios_prod1["prod1"]
-        tupla_prod1=("prod1",str(menu_opciones1.get()),"20")
+        resultado_prod1=int(menu_opciones_var1.get())*precios_prod1["prod1"]
+        tupla_prod1=("prod1",str(menu_opciones_var1.get()),"20")
         precio_cantidad_prods.append(tupla_prod1)
     else:
         resultado_prod1=0
     
     if btn_check_var2.get()==1:
-        resultado_prod2=int(menu_opciones2.get())*precios_prod1["prod2"]
-        tupla_prod2=("prod2",str(menu_opciones2.get()),"20")
+        resultado_prod2=int(menu_opciones_var2.get())*precios_prod1["prod2"]
+        tupla_prod2=("prod2",str(menu_opciones_var2.get()),"20")
         precio_cantidad_prods.append(tupla_prod2)
     else:
         resultado_prod2=0
     
     if btn_check_var3.get()==1:
-        resultado_prod3=int(menu_opciones3.get())*precios_prod1["prod3"]
-        tupla_prod3=("prod3",str(menu_opciones3.get()),"20")
+        resultado_prod3=int(menu_opciones_var3.get())*precios_prod1["prod3"]
+        tupla_prod3=("prod3",str(menu_opciones_var3.get()),"20")
         precio_cantidad_prods.append(tupla_prod3)
     else:
         resultado_prod3=0
     
     if btn_check_var4.get()==1:
-        resultado_prod4=int(menu_opciones4.get())*precios_prod1["prod4"]
-        tupla_prod4=("prod4",str(menu_opciones4.get()),"20")
+        resultado_prod4=int(menu_opciones_var4.get())*precios_prod1["prod4"]
+        tupla_prod4=("prod4",str(menu_opciones_var4.get()),"20")
         precio_cantidad_prods.append(tupla_prod4)
     else:
         resultado_prod4=0
     
     if btn_check_var5.get()==1:
-        resultado_prod5=int(menu_opciones5.get())*precios_prod1["prod5"]
-        tupla_prod5=("prod5",str(menu_opciones5.get()),"20")
+        resultado_prod5=int(menu_opciones_var5.get())*precios_prod1["prod5"]
+        tupla_prod5=("prod5",str(menu_opciones_var5.get()),"20")
         precio_cantidad_prods.append(tupla_prod5)
     else:
         resultado_prod5=0
     
     if btn_check_var6.get()==1:
-        resultado_prod6=int(menu_opciones6.get())*precios_prod1["prod6"]
-        tupla_prod6=("prod6",str(menu_opciones6.get()),"20")
+        resultado_prod6=int(menu_opciones_var6.get())*precios_prod1["prod6"]
+        tupla_prod6=("prod6",str(menu_opciones_var6.get()),"20")
         precio_cantidad_prods.append(tupla_prod6)
     else:
         resultado_prod6=0
     
     if btn_check_var7.get()==1:
-        resultado_prod7=int(menu_opciones7.get())*precios_prod1["prod7"]
-        tupla_prod7=("prod7",str(menu_opciones7.get()),"20")
+        resultado_prod7=int(menu_opciones_var7.get())*precios_prod1["prod7"]
+        tupla_prod7=("prod7",str(menu_opciones_var7.get()),"20")
         precio_cantidad_prods.append(tupla_prod7)
     else:
         resultado_prod7=0
     
     if btn_check_var8.get()==1:
-        resultado_prod8=int(menu_opciones8.get())*precios_prod1["prod8"]
-        tupla_prod8=("prod8",str(menu_opciones8.get()),"20")
+        resultado_prod8=int(menu_opciones_var8.get())*precios_prod1["prod8"]
+        tupla_prod8=("prod8",str(menu_opciones_var8.get()),"20")
         precio_cantidad_prods.append(tupla_prod8)
     else:
         resultado_prod8=0
     
     if btn_check_var9.get()==1:
-        resultado_prod9=int(menu_opciones9.get())*precios_prod1["prod9"]
-        tupla_prod9=("prod9",str(menu_opciones9.get()),"20")
+        resultado_prod9=int(menu_opciones_var9.get())*precios_prod1["prod9"]
+        tupla_prod9=("prod9",str(menu_opciones_var9.get()),"20")
         precio_cantidad_prods.append(tupla_prod9)
     else:
         resultado_prod9=0
     
     if btn_check_var10.get()==1:
-        resultado_prod10=int(menu_opciones10.get())*precios_prod1["prod10"]
-        tupla_prod10=("prod10",str(menu_opciones10.get()),"20")
+        resultado_prod10=int(menu_opciones_var10.get())*precios_prod1["prod10"]
+        tupla_prod10=("prod10",str(menu_opciones_var10.get()),"20")
         precio_cantidad_prods.append(tupla_prod10)
     else:
         resultado_prod10=0
     
     if btn_check_var11.get()==1:
-        resultado_prod11=int(menu_opciones11.get())*precios_prod1["prod11"]
-        tupla_prod11=("prod11",str(menu_opciones11.get()),"20")
+        resultado_prod11=int(menu_opciones_var11.get())*precios_prod1["prod11"]
+        tupla_prod11=("prod11",str(menu_opciones_var11.get()),"20")
         precio_cantidad_prods.append(tupla_prod11)
     else:
         resultado_prod11=0
     
     if btn_check_var12.get()==1:
-        resultado_prod12=int(menu_opciones12.get())*precios_prod1["prod12"]
-        tupla_prod12=("prod12",str(menu_opciones12.get()),"20")
+        resultado_prod12=int(menu_opciones_var12.get())*precios_prod1["prod12"]
+        tupla_prod12=("prod12",str(menu_opciones_var12.get()),"20")
         precio_cantidad_prods.append(tupla_prod12)
     else:
-        resultado_prod1=0
+        resultado_prod12=0
     
     try:
         global resultado_otro_prod
         global costo_total_prod1
         if otro_producto13.get():
             resultado_otro_prod=int(menu_opciones_var13.get())*int(precio_otro_producto13.get())
-            tupla_otro_prod=(precio_otro_producto13.get(),str(menu_opciones13.get()),precio_otro_producto13.get())
+            tupla_otro_prod=(otro_producto13.get(),str(menu_opciones_var13.get()),precio_otro_producto13.get())
             precio_cantidad_prods.append(tupla_otro_prod)
         else:
             resultado_otro_prod=0
@@ -191,24 +191,167 @@ def ventas_totales():
         costo_total_prod1= (resultado_prod1+resultado_prod2+resultado_prod3+resultado_prod4+resultado_prod5+resultado_prod6+resultado_prod7+resultado_prod8+resultado_prod9+resultado_prod10+resultado_prod11+resultado_prod12+resultado_otro_prod)
 
         costo_productos1.delete(0,END)
-        costo_productos1.insert(0,"₡ "+Str(costo_total_prod1))
+        costo_productos1.insert(0,"₡ "+str(costo_total_prod1))
     except NameError:
         error_handling("error")
     except ValueError:
         messagebox.showerror("Error","Ponga precio a sus productos primero.")
 
 
+    precios_prod2={"prod1": 20, "prod2":20,"prod3":20,"prod4":20,"prod5":20,"prod6":20,"prod7":20,"prod8":20,"prod9":20,"prod10":20,"prod11":20,"prod12":20,"Otros productos":mp2_menu_opciones_var13.get()}
+
+    if mp2_btn_check_var1.get()==1:
+        mp2_resultado_prod1=int(mp2_menu_opciones_var1.get())*precios_prod2["prod1"]
+        mp2_tupla_prod1=("prod1",str(mp2_menu_opciones_var1.get()),"20")
+        precio_cantidad_prods.append(mp2_tupla_prod1)
+    else:
+        mp2_resultado_prod1=0
+
+    if mp2_btn_check_var2.get()==1:
+        mp2_resultado_prod2=int(mp2_menu_opciones_var2.get())*precios_prod2["prod2"]
+        mp2_tupla_prod2=("prod2",str(mp2_menu_opciones_var2.get()),"20")
+        precio_cantidad_prods.append(mp2_tupla_prod2)
+    else:
+        mp2_resultado_prod2=0
+    
+    if mp2_btn_check_var3.get()==1:
+        mp2_resultado_prod3=int(mp2_menu_opciones_var3.get())*precios_prod2["prod3"]
+        mp2_tupla_prod3=("prod3",str(mp2_menu_opciones_var3.get()),"20")
+        precio_cantidad_prods.append(mp2_tupla_prod3)
+    else:
+        mp2_resultado_prod3=0
+    
+    if mp2_btn_check_var4.get()==1:
+        mp2_resultado_prod4=int(mp2_menu_opciones_var4.get())*precios_prod2["prod4"]
+        mp2_tupla_prod4=("prod4",str(mp2_menu_opciones_var4.get()),"20")
+        precio_cantidad_prods.append(mp2_tupla_prod4)
+    else:
+        mp2_resultado_prod4=0
+    
+    if mp2_btn_check_var5.get()==1:
+        mp2_resultado_prod5=int(mp2_menu_opciones_var5.get())*precios_prod2["prod5"]
+        mp2_tupla_prod5=("prod5",str(mp2_menu_opciones_var5.get()),"20")
+        precio_cantidad_prods.append(mp2_tupla_prod5)
+    else:
+        mp2_resultado_prod5=0
+    
+    if mp2_btn_check_var6.get()==1:
+        mp2_resultado_prod6=int(mp2_menu_opciones_var6.get())*precios_prod2["prod6"]
+        mp2_tupla_prod6=("prod6",str(mp2_menu_opciones_var6.get()),"20")
+        precio_cantidad_prods.append(mp2_tupla_prod6)
+    else:
+        mp2_resultado_prod6=0
+    
+    if mp2_btn_check_var7.get()==1:
+        mp2_resultado_prod7=int(mp2_menu_opciones_var7.get())*precios_prod2["prod7"]
+        mp2_tupla_prod7=("prod7",str(mp2_menu_opciones_var7.get()),"20")
+        precio_cantidad_prods.append(mp2_tupla_prod7)
+    else:
+        mp2_resultado_prod7=0
+    
+    if mp2_btn_check_var8.get()==1:
+        mp2_resultado_prod8=int(mp2_menu_opciones_var8.get())*precios_prod2["prod8"]
+        mp2_tupla_prod8=("prod8",str(mp2_menu_opciones_var8.get()),"20")
+        precio_cantidad_prods.append(mp2_tupla_prod8)
+    else:
+        mp2_resultado_prod8=0
+    
+    if mp2_btn_check_var9.get()==1:
+        mp2_resultado_prod9=int(mp2_menu_opciones_var9.get())*precios_prod2["prod9"]
+        mp2_tupla_prod9=("prod9",str(mp2_menu_opciones_var9.get()),"20")
+        precio_cantidad_prods.append(mp2_tupla_prod9)
+    else:
+        mp2_resultado_prod9=0
+    
+    if mp2_btn_check_var10.get()==1:
+        mp2_resultado_prod10=int(mp2_menu_opciones_var10.get())*precios_prod2["prod10"]
+        mp2_tupla_prod10=("prod10",str(mp2_menu_opciones_var10.get()),"20")
+        precio_cantidad_prods.append(mp2_tupla_prod10)
+    else:
+        mp2_resultado_prod10=0
+    
+    if mp2_btn_check_var11.get()==1:
+        mp2_resultado_prod11=int(mp2_menu_opciones_var11.get())*precios_prod2["prod11"]
+        mp2_tupla_prod11=("prod11",str(mp2_menu_opciones_var11.get()),"20")
+        precio_cantidad_prods.append(mp2_tupla_prod11)
+    else:
+        mp2_resultado_prod11=0
+    
+    if mp2_btn_check_var12.get()==1:
+        mp2_resultado_prod12=int(mp2_menu_opciones_var12.get())*precios_prod2["prod12"]
+        mp2_tupla_prod12=("prod12",str(mp2_menu_opciones_var12.get()),"20")
+        precio_cantidad_prods.append(mp2_tupla_prod12)
+    else:
+        mp2_resultado_prod12=0
+
+    try:
+        global mp2_resultado_otro_prod
+        if mp2_otro_producto13.get():
+            mp2_resultado_otro_prod=int(mp2_menu_opciones_var13.get())*int(mp2_precio_otro_producto13.get())
+            mp2_tupla_otro_prod=(mp2_otro_producto13.get(),str(mp2_menu_opciones_var13.get()),mp2_precio_otro_producto13.get())
+            precio_cantidad_prods.append(mp2_tupla_otro_prod)
+        else:
+            mp2_resultado_otro_prod=0
+        
+        global costo_total_prod2
+        global impuestos_totales
+        costo_total_prod2=(mp2_resultado_prod1+mp2_resultado_prod2+mp2_resultado_prod3+mp2_resultado_prod4+mp2_resultado_prod5+mp2_resultado_prod6+mp2_resultado_prod7+mp2_resultado_prod8+mp2_resultado_prod9+mp2_resultado_prod10+mp2_resultado_prod11+mp2_resultado_prod12+mp2_resultado_otro_prod)
+
+        costo_productos2.delete(0,END)
+        costo_productos2.insert(0,"₡ "+str(costo_total_prod2))
+
+        costo_total.delete(0,END)
+        costo_total.insert(0,"₡ "+str(costo_total_prod1+costo_total_prod2))
+
+        impuestos_totales=0.13*(costo_total_prod1+costo_total_prod2)
+
+        impuestos.delete(0,END)
+        impuestos.insert(0,"₡ "+str(impuestos_totales))
+
+        subtotal.delete(0,END)
+        subtotal.insert(0,"₡ "+str(costo_total_prod1+costo_total_prod2))
+
+        total.delete(0,END)
+        total.insert(0,"₡ "+str(costo_total_prod1+costo_total_prod2+impuestos_totales))
+    except NameError:
+        error_handling("error")
+    except ValueError:
+        messagebox.showerror("Error","Precio primero")
 
 
+def imprimir_factura():
+    try:
+        espacio_factura.delete("1.0",END)
+        espacio_factura.insert(END,"          LA TIENDITA"+"\n")
+        espacio_factura.insert(END," "+"\n")
+        
+        x=0
+        while True:
+            espacio_factura.insert(END,"  "+precio_cantidad_prods[x][0]+" :   "+precio_cantidad_prods[x][1]+" und ₡"+precio_cantidad_prods[x][2]+" c/u"+"\n")
+            x+=1
+
+            if x<len(precio_cantidad_prods):
+                continue
+            else:
+                break
+        
+        espacio_factura.insert(END," "+"\n")
+        espacio_factura.insert(END,"  Costo productos1"+costo_productos1_var.get()+"\n")
+        espacio_factura.insert(END,"  Costo productos2"+costo_productos2_var.get()+"\n")
+        espacio_factura.insert(END,"  Costo total "+costo_total_var.get()+"\n")
+        espacio_factura.insert(END," "+"\n")
+        espacio_factura.insert(END,"***** GRACIAS POR SU VISITA***** "+"\n")
+    except IndexError:
+        messagebox.showerror("Error","Escoja los productos primero, gracias")
+    except NameError:
+        messagebox.showerror("Error","Seleccione los productos primero, gracias")
 
 
+def guardar_datos():
+    return
 
-
-
-
-
-
-
+def reporte():
+    return
 
 
 
@@ -447,9 +590,6 @@ menu_opciones13=OptionMenu(marco_productos1,menu_opciones_var13,*lista_menu)
 menu_opciones13.configure(bg=color,font=("arial",7))
 menu_opciones13.place(x=200,y=390)
 
-#precio_menu_opciones_var13=StringVar()
-#precio_menu_opciones13= Entry(marco_productos1,#textvariable=precio_menu_opciones_var13,width=10)
-#precio_menu_opciones13.place(x=100,y=420)
 
 #       CHECKS, ETIQUETAS Y CANTIDADES MARCO PROD2
 mp2_btn_check_var1=IntVar()
