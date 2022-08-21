@@ -1,4 +1,5 @@
 from ast import Str
+from ctypes import LibraryLoader
 from email import message
 from tkinter import *
 from tkinter import messagebox
@@ -7,7 +8,7 @@ from turtle import end_fill
 from openpyxl import *
 import time
 import random
-from ads import error_handling
+from ads import error_handling, today_report
 
 def salir():
     punto_venta.destroy()
@@ -336,9 +337,9 @@ def imprimir_factura():
                 break
         
         espacio_factura.insert(END," "+"\n")
-        espacio_factura.insert(END,"  Costo productos1"+costo_productos1_var.get()+"\n")
-        espacio_factura.insert(END,"  Costo productos2"+costo_productos2_var.get()+"\n")
-        espacio_factura.insert(END,"  Costo total "+costo_total_var.get()+"\n")
+        espacio_factura.insert(END,"  Costo productos1   "+costo_productos1_var.get()+"\n")
+        espacio_factura.insert(END,"  Costo productos2   "+costo_productos2_var.get()+"\n")
+        espacio_factura.insert(END,"  Costo total        "+costo_total_var.get()+"\n")
         espacio_factura.insert(END," "+"\n")
         espacio_factura.insert(END,"***** GRACIAS POR SU VISITA***** "+"\n")
     except IndexError:
@@ -348,10 +349,97 @@ def imprimir_factura():
 
 
 def guardar_datos():
-    return
+    #Cargar el libro
+    try:
+        global libro
+        archivo_destino="Punto_de_venta.xlsx"
+        libro=load_workbook(filename=archivo_destino)
+
+        #Traer la hoja
+        hoja=libro.active
+
+        #Variables utiles
+        fila=2
+        columna=1
+        global hoy 
+        hoy=time.strftime("%x")
+        id_=random.randint(1,1000000)
+
+        if precio_cantidad_prods:
+            while True:
+                if hoja.cell(row=fila,column=columna).value:
+                    fila+=1
+                    continue
+                else:
+                    hoja.cell(row=fila,column=columna).value=hoy
+                    columna+=1
+                    hoja.cell(row=fila,column=columna).value=id_
+                    columna+=1
+
+                    #Añadir elementos a las celdas
+                    x=len(precio_cantidad_prods)
+                    hoja.cell(row=fila,column=columna).value=x
+                    columna+=1
+
+                    hoja.cell(row=fila,column=columna).value=costo_total_prod1+costo_total_prod2
+                    columna+=1
+                    hoja.cell(row=fila,column=columna).value=impuestos_totales
+                
+                    if columna==5:
+                        break
+            libro.save(filename=archivo_destino)
+            messagebox.showinfo("Datos guardados","Se han guardado los datos")
+        else:
+            messagebox.showerror("Error","Nada que agregar")
+    except NameError:
+        messagebox.showerror("Error","Nada que agregar") 
+    
 
 def reporte():
-    return
+    archivo_destino2="Punto_de_venta.xlsx"
+    libro_reporte=load_workbook(filename=archivo_destino2)
+
+    hoja2=libro_reporte.active
+
+    fila=2
+    columna=1
+    fila_maxima=hoja2.max_row
+    monto_total=[]
+    impuesto_total=[]
+    hoy2=time.strftime("%x")
+
+    x=0
+    while x<fila_maxima:
+        if hoja2.cell(row=fila,column=columna).value==hoy2:
+            monto_total.append(hoja2.cell(row=fila,column=4).value)
+            impuesto_total.append(hoja2.cell(row=fila,column=5).value)
+            fila+=1
+            x+=1
+            continue
+        else:
+            fila+=1
+            x+=1
+            continue
+
+    respuesta1=0
+    for entero in monto_total:
+        respuesta1+=entero
+
+    respuesta2=0
+    for flotante in impuesto_total:
+        respuesta2+=flotante
+
+    espacio_factura.delete("1.0",END)
+    espacio_factura.insert(END,"     LA TIENDITA "+hoy2+"."+"\n")
+    espacio_factura.insert(END, "  " + "\n")
+    espacio_factura.insert(END,      "***REPORTE DIARIO***"+"\n")
+    espacio_factura.insert(END, "  " + "\n")
+    espacio_factura.insert(END,"Monto total generado hoy:        "+"₡"+str(respuesta1)+"\n")
+    espacio_factura.insert(END, "  " + "\n")
+    espacio_factura.insert(END,"Impuestos totales generados hoy: "+"₡"+str(respuesta2)+"\n")
+    espacio_factura.insert(END, "  " + "\n")
+    espacio_factura.insert(END,"Ingresos mas impuestos de hoy:   "+"₡"+str(respuesta1+respuesta2)+"\n")
+    espacio_factura.insert(END, "  " + "\n")
 
 
 
