@@ -19,7 +19,7 @@ main.resizable(width=FALSE,height=FALSE)
 main.geometry("1200x650")
 main.title("Punto de venta")
 
-
+#MARCOS MAIN
 main_marco_arriba=Frame(main,bg="Black",width=1200,height=50)
 main_marco_arriba.pack(side=TOP)
 
@@ -29,20 +29,21 @@ main_marco_abajo.pack(side=BOTTOM)
 main_marco_centro=Frame(main,width=1200,height=520)
 main_marco_centro.pack(side=LEFT)
 
+#B0T0NES MAIN
 icono_facturacion=PhotoImage(file="facturacion.png")
-btn_fact=Button(main,text="Facturación",image=icono_facturacion,compound=TOP,command=lambda:facturacion())
+btn_fact=Button(main,text="Facturación",image=icono_facturacion,compound=TOP,command=lambda:facturacion(),width=75,height=75)
 btn_fact.place(x=400,y=150)
 
 icono_administracion=PhotoImage(file="administracion.png")
-btn_fact=Button(main,text="Administración",image=icono_administracion,compound=TOP)
+btn_fact=Button(main,text="Administración",image=icono_administracion,compound=TOP,width=75,height=75)
 btn_fact.place(x=400,y=300)
 
 icono_inicio_sesion=PhotoImage(file="inicio_sesion.png")
-btn_fact=Button(main,text="Inicio de sesión",image=icono_inicio_sesion,compound=TOP)
+btn_fact=Button(main,text="Inicio de sesión",image=icono_inicio_sesion,compound=TOP,width=75,height=75)
 btn_fact.place(x=600,y=150)
 
 icono_inventario=PhotoImage(file="Inventario.png")
-btn_fact=Button(main,text="Inventario",image=icono_inventario,compound=TOP)
+btn_fact=Button(main,text="Inventario",image=icono_inventario,compound=TOP,width=75,height=75)
 btn_fact.place(x=600,y=300)
 
 def facturacion():
