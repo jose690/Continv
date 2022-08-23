@@ -8,6 +8,7 @@ from turtle import end_fill
 from openpyxl import *
 import time
 import random
+import tkinter as tk
 
 
 
@@ -15,7 +16,7 @@ import random
 
 #Manejo de erorres
 def manejo_errores(mensaje_error):
-    if mensaje_error == "Error!":
+    if mensaje_error == "Error":
         messagebox.showerror("Error", "No hay digitos para manejar!")
 
 #Función para cerrar la aplicación
@@ -205,7 +206,7 @@ def ventas_totales():
         costo_productos1.delete(0,END)
         costo_productos1.insert(0,"₡ "+str(costo_total_prod1))
     except NameError:
-        manejo_errores("error")
+        manejo_errores("Error")
     except ValueError:
         messagebox.showerror("Error","Ponga precio a sus productos primero.")
 
@@ -326,7 +327,7 @@ def ventas_totales():
         total.delete(0,END)
         total.insert(0,"₡ "+str(costo_total_prod1+costo_total_prod2+impuestos_totales))
     except NameError:
-        manejo_errores("error")
+        manejo_errores("Error")
     except ValueError:
         messagebox.showerror("Error","Precio primero")
 
@@ -840,7 +841,5 @@ btn_reporte.place(x=100,y=50)
 
 btn_salir=Button(marco_abajo,text="Salir",width=10,bg=color2,command=lambda:salir())
 btn_salir.place(x=200,y=50)
-
-
 
 punto_venta.mainloop()

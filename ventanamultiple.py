@@ -2,7 +2,7 @@ import tkinter as tk # all lowercase tkinter for Python 3.x
 
 
 root = tk.Tk()
-
+root.geometry("1280x600")
 def write_text():
     print("hello") # Python 3.x requires brackets for print statements.
 
