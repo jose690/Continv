@@ -12,8 +12,6 @@ import tkinter as tk
 from PIL import Image,ImageTk
 
 
-   
-
 main=Tk()
 main.resizable(width=FALSE,height=FALSE)
 main.geometry("1200x650")
@@ -45,6 +43,8 @@ btn_fact.place(x=600,y=150)
 icono_inventario=PhotoImage(file="Inventario.png")
 btn_fact=Button(main,text="Inventario",image=icono_inventario,compound=TOP,width=75,height=75)
 btn_fact.place(x=600,y=300)
+
+
 
 def facturacion():
     #FUNCIONES
@@ -878,12 +878,4 @@ def facturacion():
     btn_salir.place(x=200,y=50)
 
     punto_venta.mainloop()
-
-
-
 main.mainloop()
-
-
-
-
-    
