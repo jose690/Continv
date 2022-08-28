@@ -5,11 +5,23 @@ from tkinter import *
 from tkinter import messagebox
 from tokenize import String
 from turtle import end_fill, left, width
+from unicodedata import name
 from openpyxl import *
 import time
 import random
 import tkinter as tk
 from PIL import Image,ImageTk
+
+class prod:
+    def __init__(self,nombre,precio):
+        self.nombre=nombre
+        self.precio=precio
+
+prod1=prod("Manzana",20)
+
+prod1.nombre
+
+
 
 
 main=Tk()
@@ -41,10 +53,14 @@ btn_fact=Button(main,text="Inicio de sesión",image=icono_inicio_sesion,compound
 btn_fact.place(x=600,y=150)
 
 icono_inventario=PhotoImage(file="Inventario.png")
-btn_fact=Button(main,text="Inventario",image=icono_inventario,compound=TOP,width=75,height=75)
+btn_fact=Button(main,text="Inventario",image=icono_inventario,compound=TOP,command=lambda:inventario(),width=75,height=75)
 btn_fact.place(x=600,y=300)
 
-
+def inventario():
+    ventana_inventario=Toplevel(main)
+    main.resizable(width=FALSE,height=FALSE)
+    main.geometry("1200x650")
+    main.title("Punto de venta")
 
 def facturacion():
     #FUNCIONES
