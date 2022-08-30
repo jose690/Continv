@@ -12,22 +12,11 @@ import random
 import tkinter as tk
 from PIL import Image,ImageTk
 
-class prod:
-    def __init__(self,nombre,precio):
-        self.nombre=nombre
-        self.precio=precio
-
-prod1=prod("Manzana",20)
-
-prod1.nombre
-
-
-
 
 main=Tk()
 main.resizable(width=FALSE,height=FALSE)
 main.geometry("1200x650")
-main.title("Punto de venta")
+main.title("Menú principal")
 
 #MARCOS MAIN
 main_marco_arriba=Frame(main,bg="Black",width=1200,height=50)
@@ -40,27 +29,72 @@ main_marco_centro=Frame(main,width=1200,height=520)
 main_marco_centro.pack(side=LEFT)
 
 #B0T0NES MAIN
-icono_facturacion=PhotoImage(file="facturacion.png")
+icono_facturacion=PhotoImage(file=r"C:\Users\joze6\Documents\Continv\imagenes\facturacion.png")
 btn_fact=Button(main,text="Facturación",image=icono_facturacion,compound=TOP,command=lambda:facturacion(),width=75,height=75)
 btn_fact.place(x=400,y=150)
 
-icono_administracion=PhotoImage(file="administracion.png")
-btn_fact=Button(main,text="Administración",image=icono_administracion,compound=TOP,width=75,height=75)
+icono_administracion=PhotoImage(file=r"C:\Users\joze6\Documents\Continv\imagenes\administracion.png")
+btn_fact=Button(main,text="Administración",image=icono_administracion,compound=TOP,command=lambda:administracion(),width=75,height=75)
 btn_fact.place(x=400,y=300)
 
-icono_inicio_sesion=PhotoImage(file="inicio_sesion.png")
-btn_fact=Button(main,text="Inicio de sesión",image=icono_inicio_sesion,compound=TOP,width=75,height=75)
+icono_inicio_sesion=PhotoImage(file=r"C:\Users\joze6\Documents\Continv\imagenes\inicio_sesion.png")
+btn_fact=Button(main,text="Inicio de sesión",image=icono_inicio_sesion,compound=TOP,command=lambda:inicio_sesion(),width=75,height=75)
 btn_fact.place(x=600,y=150)
 
-icono_inventario=PhotoImage(file="Inventario.png")
+icono_inventario=PhotoImage(file=r"C:\Users\joze6\Documents\Continv\imagenes\Inventario.png")
 btn_fact=Button(main,text="Inventario",image=icono_inventario,compound=TOP,command=lambda:inventario(),width=75,height=75)
 btn_fact.place(x=600,y=300)
 
+def inicio_sesion():
+    ventana_inicio_sesion=Toplevel(main)
+    ventana_inicio_sesion.resizable(width=FALSE,height=FALSE)
+    ventana_inicio_sesion.geometry("1200x650")
+    ventana_inicio_sesion.title("Inventario")
+
+    inise_marco_arriba=Frame(main,bg="Black",width=1200,height=50)
+    inise_marco_arriba.pack(side=TOP)
+
+    inise_marco_abajo=Frame(main,bg="Black",width=1200,height=50)
+    inise_marco_abajo.pack(side=BOTTOM)
+
+    inise_marco_centro=Frame(main,width=1200,height=520)
+    inise_marco_centro.pack(side=LEFT)
+
+    ventana_inicio_sesion.mainloop()
+
+def administracion():
+    ventana_administracion=Toplevel(main)
+    ventana_administracion.resizable(width=FALSE,height=FALSE)
+    ventana_administracion.geometry("1200x650")
+    ventana_administracion.title("Inventario")
+
+    adm_marco_arriba=Frame(main,bg="Black",width=1200,height=50)
+    adm_marco_arriba.pack(side=TOP)
+
+    adm_marco_abajo=Frame(main,bg="Black",width=1200,height=50)
+    adm_marco_abajo.pack(side=BOTTOM)
+
+    adm_marco_centro=Frame(main,width=1200,height=520)
+    adm_marco_centro.pack(side=LEFT)
+
+    ventana_administracion.mainloop()
+
 def inventario():
     ventana_inventario=Toplevel(main)
-    main.resizable(width=FALSE,height=FALSE)
-    main.geometry("1200x650")
-    main.title("Punto de venta")
+    ventana_inventario.resizable(width=FALSE,height=FALSE)
+    ventana_inventario.geometry("1200x650")
+    ventana_inventario.title("Inventario")
+
+    inv_marco_arriba=Frame(main,bg="Black",width=1200,height=50)
+    inv_marco_arriba.pack(side=TOP)
+
+    inv_marco_abajo=Frame(main,bg="Black",width=1200,height=50)
+    inv_marco_abajo.pack(side=BOTTOM)
+
+    inv_marco_centro=Frame(main,width=1200,height=520)
+    inv_marco_centro.pack(side=LEFT)
+
+    ventana_inventario.mainloop()
 
 def facturacion():
     #FUNCIONES
@@ -414,7 +448,7 @@ def facturacion():
     def guardar_datos():
         try:
             global libro
-            archivo_destino="Punto_de_venta.xlsx"
+            archivo_destino=r"C:\Users\joze6\Documents\Continv\Punto_de_venta.xlsx"
             libro=load_workbook(filename=archivo_destino)
 
             hoja=libro.active
@@ -455,7 +489,7 @@ def facturacion():
         
     #Función para generar el reporte de las ventas diarias en base al archivo de excel
     def reporte():
-        archivo_destino2="Punto_de_venta.xlsx"
+        archivo_destino2=r"C:\Users\joze6\Documents\Continv\Punto_de_venta.xlsx"
         libro_reporte=load_workbook(filename=archivo_destino2)
 
         hoja2=libro_reporte.active
