@@ -545,10 +545,10 @@ def facturacion():
     punto_venta.title("Punto de venta")
     color="Light Gray"
     color2="Gray"
-    punto_venta.configure(bg=color)
+    punto_venta.configure(bg="White")
 
     #Marcos
-    marco_arriba=Frame(punto_venta,bg=color,width=1200, height=50)
+    marco_arriba=Frame(punto_venta,bg="Blue",width=1200, height=50)
     marco_arriba.pack(side=TOP)
 
     marco_abajo=Frame(punto_venta,bg=color,width=1200,height=150)
@@ -567,7 +567,7 @@ def facturacion():
     marco_factura.place(x=610,y=210)
 
     #Titulo
-    etiqueta_titulo=Label(marco_arriba,text="La tiendita", font=("Aisha Latin Semibold",20, "bold"),bg=color,pady=10)
+    etiqueta_titulo=Label(marco_arriba,text="La tiendita",fg="White", font=("Aisha Latin Semibold",20, "bold"),bg="Blue",pady=10)
     etiqueta_titulo.pack(side=LEFT)
 
     #Etiquetas y datos de resumen
