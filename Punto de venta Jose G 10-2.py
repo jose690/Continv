@@ -9,6 +9,8 @@ from openpyxl import *
 import time
 import random
 import tkinter as tk
+from openpyxl import load_workbook
+from openpyxl import workbook
 
 
 
@@ -363,7 +365,7 @@ def imprimir_factura():
 def guardar_datos():
     try:
         global libro
-        archivo_destino="Punto_de_venta.xlsx"
+        archivo_destino="C:\\Users\\joze6\\Documents\\GitHub\\Continv\\Punto_de_venta.xlsx"
         libro=load_workbook(filename=archivo_destino)
 
         hoja=libro.active
@@ -404,7 +406,7 @@ def guardar_datos():
     
 #Función para generar el reporte de las ventas diarias en base al archivo de excel
 def reporte():
-    archivo_destino2="Punto_de_venta.xlsx"
+    archivo_destino2="C:\\Users\\joze6\\Documents\\GitHub\\Continv\\Punto_de_venta.xlsx"
     libro_reporte=load_workbook(filename=archivo_destino2)
 
     hoja2=libro_reporte.active
